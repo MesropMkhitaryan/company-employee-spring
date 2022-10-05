@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>add employee</title>
+</head>
+<body>
+
+<h2>add employee</h2>
+
+<span style="color: #ff512f" th:if="${fileContentTypeError != null}" th:text="${fileContentTypeError}"></span>
+
+<form action="/employee/add" method="post" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="name">
+    <input type="text" name="surname" placeholder="surname">
+    <input type="email" name="email" placeholder="email">
+    <input type="text" name="phoneNumber" placeholder="phoneNumber">
+    <input type="number" name="salary" placeholder="salary">
+    <select name="position" >
+        <option value="EXECUTIVE">EXECUTIVE</option>
+        <option value="MANAGER">MANAGER</option>
+        <option value="PRESIDENT">PRESIDENT</option>
+        <option value="VICE_PRESIDENT">VICE PRESIDENT</option>
+    </select>
+    <select name="company">
+        <option th:each="company : ${companyList}" th:text="${company.name}" th:value="${company.id}"></option>
+    </select>
+    <input type="file" name="image" accept="image/*">
+    <input type="submit" value="add employee">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+
+<!--/*@thymesVar id="currentUser" type=""*/-->
+
+<th:block th:if="${currentUser != null}">
+    <a href="/logout">logout</a>
+    <br>
+    <a href="/company/add">add company</a>
+    <br>
+    <a href="/employee/add">add employee</a>
+</th:block>
+<br>
+<th:block th:if="${currentUser == null}">
+    <a href="/register">register</a>
+    <br>
+    <a href="/loginPage">login</a>
+    <br>
+</th:block>
+
+
+<a href="/companies">Companies</a>
+<br>
+<a href="/employees">Employees</a>
+
+</body>
+</html>

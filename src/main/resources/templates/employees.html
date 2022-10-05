@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>employees</title>
+</head>
+<body>
+
+<br>
+
+<table border="1px">
+    <tr>
+        <th>name</th>
+        <th>surname</th>
+        <th>email</th>
+        <th>phone number</th>
+        <th>salary</th>
+        <th>position</th>
+        <th>company</th>
+        <th>image</th>
+    </tr>
+    <tr th:each="employee : ${employeeList}">
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.surname}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.phoneNumber}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td th:text="${employee.position}"></td>
+        <td th:text="${employee.company}"></td>
+        <td>
+            <img th:src="@{/employee/getPicUrl(fileName = ${employee.getPicUrl()})}">
+        </td>
+        <td th:if="${currentUser != null}">
+            <a th:href="@{/employee/remove(id = ${employee.id})}">remove employee</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
